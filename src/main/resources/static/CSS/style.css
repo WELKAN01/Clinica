@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Telugu&display=swap');
+
+*{
+    font-family: 'Anek Telugu', sans-serif;
+}
+body{
+    font-size:calc();
+}
+.dashboard{
+    display: flex;
+    height: 100vh;
+    background: rgb(4,9,49);
+    background: radial-gradient(circle, rgba(4,9,49,1) 4%, rgba(2,0,36,1) 12%, rgba(38,136,219,0.9895308465182948) 41%, rgba(41,129,210,1) 47%, rgba(81,43,99,1) 77%);
+    
+}
+.sidebar-tittle{
+    padding: 25px 10px 5px 10px;
+    color: rgb(45, 48, 219);
+}
+.margen{
+    min-width: 7%;
+    height: 100vh;
+    align-items: center;
+    justify-items: center;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    background-color: rgb(58, 58, 58);
+    transition: all 500ms ease; 
+    
+}
+.superior{
+    padding: 10px 20px  ;
+}
+.nav ul li{
+    border-radius: 15px;
+    list-style: none;
+    height: 50px;
+    min-width: 20px;
+    display: flex;
+    text-decoration: none;
+    margin: 15px 15px;
+    cursor: pointer;
+    transition: all 500ms ease; 
+}
+.nav ul li a{
+    text-decoration: none;
+    color: white;
+    align-items: center;
+}
+.nav ul li a i{
+    min-width: 20px;
+}
+.nav ul{
+    padding-left: 0;
+}
+li:hover{
+    background-color: rgb(102, 102, 102);
+    border-radius: 15px;
+    height: 30px;
+}
+.nav:hover{
+    color: rgb(41, 41, 41);
+}
+
+.content{
+    min-width: 20%;
+    height: 95vh;
+    /* margin-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px; */
+    overflow-y:visible;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+::-webkit-scrollbar-thumb{
+    width: 5px;
+    border-radius: 20px;
+    background-color: aliceblue;
+}
+
+/* .card{
+    margin: 30px;
+    border:2px rgb(56, 56, 56) solid;
+} */
+.footer{
+    padding: 0px 15px;
+    top: 2rem !important;
+    color: white;
+}
+.footer a{
+    text-decoration: none;
+    color: wheat;
+}
+.footer a:hover{
+    color: brown;
+}
+a i{
+    margin: 0 5px 0 0;
+}
+.z{
+    z-index: 2;
+}

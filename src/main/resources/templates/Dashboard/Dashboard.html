@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="fragmento/frag :: head">
+    </head>
+    <body>
+    <div class="dashboard">
+        <div class="margen" th:replace="fragmento/frag :: navbar">
+        </div>
+        <!-- contenido -->
+        <div class="container my-3 content">
+            <div class="card mb-5">
+                <h1 class="m-3">Cliente</h1>
+                <div class="card-body">
+                    <form action="" method="post">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="Nombre">Ingrese un nombre</label>
+                                <input type="text" class="form-control" id="Nombre" placeholder="Ingrese su nombre">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="Apellido">Ingrese apellido</label>
+                                <input type="text" class="form-control" id="Apellido" placeholder="Ingrese apellido">
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-sm-3">
+                                <label for="fecha">Ingrese nacimiento</label>
+                                <input type="date" class="form-control" id="fecha" placeholder="Nacimiento">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="documento">Ingrese DNI</label>
+                                <input type="text" id="documento" class="form-control" placeholder="Ingrese DNI">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="telefono">telefono</label>
+                                <input type="text" id="telefono" class="form-control" placeholder="ingrese telefono">
+                            </div>
+                            <div class="row w-25 mx-auto">
+                                <button class="btn btn-danger" type="submit">Ingresar datos</button>
+                            </div>    
+                        </div>    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

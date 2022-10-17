@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Telugu&display=swap');
+
+*{
+    font-family: 'Anek Telugu', sans-serif;
+    box-sizing:border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+	background-image: url(../IMG/Recurso1.png);
+}
+
+input[type=hidden]{
+	display: none;
+}
+
+.back{
+	background: rgba(239, 108, 108,0.45);
+	width: 35em;
+}
+input[type=password]{
+	position: relative;
+}
+input[type=email]{
+	position: relative;
+}
+.password{
+	font-size:1.5em;
+	margin-top:0;
+	margin-bottom:0;
+	top:0.5em;
+	left:2em;
+	position: absolute;
+	transition:all 400ms ease-in;
+}
+.correo{
+	font-size:1.5em;
+	top:0.5em;
+	left:2em;
+	position: absolute;
+	transition:all 400ms ease-in;
+}
+
+.password-active {
+	top:-1em;
+}
+
+.correo-active{
+	top:-1em;
+	
+}
+.z{
+	z-index: 2;
+	
+}
