@@ -48,18 +48,17 @@ public class UsuariosSer implements UserDetailsService, UsuarioImp {
 
 	//GUARDAR USUARIOS NO REPETIDOS
 
-	@Override
-	public void GuardarUsuario(Usuarios usuarios) {
-		ArrayList<Usuarios> list=(ArrayList<Usuarios>) UDAO.findAll();
-		if(!list.contains(usuarios)){
-			UDAO.save(usuarios);	
-		}
-	}
+	
 
 	//ENCONTRAR TODOS LOS USUARIOS EXISTENTES
 	@Override
 	public List<Usuarios> cargarUsuarios() {
 		return (List<Usuarios>) UDAO.findAll();
+	}
+
+	@Override
+	public Usuarios buscarUsuarioID(Long id) {
+		return UDAO.findById(id).orElse(null);
 	}
 
 	

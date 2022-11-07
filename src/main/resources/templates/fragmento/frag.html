@@ -7,7 +7,6 @@
     <title>POSTA ANITA</title>
     <link rel="stylesheet" th:href="@{CSS/style.css}">
     <script src="https://kit.fontawesome.com/abfa0b2316.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="mov.js"></script>
     <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/brands.js" integrity="sha384-sCI3dTBIJuqT6AwL++zH7qL8ZdKaHpxU43dDt9SyOzimtQ9eyRhkG3B7KMl6AO19" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -31,6 +30,7 @@
             </div>
             <div class="footer" sec:authorize="isAuthenticated()">
                 <a href=""><i class="fa-solid fa-address-card"></i>PERFIL</a>
+                <span  th:text="${afirmar}"></span>
                 <h5>Rango: 
                     <span sec:authentication="principal.authorities"></span>
                 </h5>

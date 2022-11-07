@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head th:replace="fragmento/frag :: head">
+    
     </head>
     <body>
     <div class="dashboard">
@@ -73,10 +74,34 @@
                                     </i></a></td>
                             </tr>
                         </tbody>
+                        <tbody id="resultAPI">
+
+                        </tbody>
                     </table>
+                    <div class="app"></div>
                 </div>
             </div>
         </div>
     </div>
     </body>
+    <script type="text/javascript">
+        const apps=document.querySelector('#app');
+        var i=0;
+        var URL="http://localhost:8080";
+        fetch('http://localhost:8080/usuariolist').
+            then(res=> res.json()).
+            then(data =>{
+                console.log(data);
+                data.forEach(usuarios =>{
+                let API=document.getElementById("resultAPI");
+                // console.log(usuarios.nombres+"----"+usuarios.correo+"---"+usuarios.rol[0].authority);
+                    API.innerHTML +="<tr><td>"
+                        +usuarios.nombres+
+                        "<td/>"+usuarios.apellidos+
+                        "<td/>"+usuarios.correo+
+                        "<td></tr>";
+                })
+            })
+    
+    </script>
 </html>

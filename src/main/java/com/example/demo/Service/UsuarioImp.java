@@ -5,6 +5,6 @@ import com.example.demo.Entity.Usuarios;
 
 public interface UsuarioImp {
     public Usuarios EncontrarUsuario(String usuario);
-    public void GuardarUsuario(Usuarios usuarios);
+    public Usuarios buscarUsuarioID(Long id);
     public List<Usuarios> cargarUsuarios();
 }

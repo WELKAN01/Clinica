@@ -1,19 +1,20 @@
 package com.example.demo;
-
-import java.security.Principal;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.lang.Nullable;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.validation.Validator;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.example.demo.Service.UsuariosSer;
 	
@@ -27,6 +28,7 @@ public class SecurityConfig{
         return NoOpPasswordEncoder.getInstance();
     }
 
+	
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider(){
 		DaoAuthenticationProvider auth=new DaoAuthenticationProvider();
@@ -35,6 +37,13 @@ public class SecurityConfig{
 		return auth;
 	}
 	
+	@Bean(name="myPasswordEncoder")
+public PasswordEncoder getPasswordEncoder() {
+        DelegatingPasswordEncoder delPasswordEncoder=  (DelegatingPasswordEncoder)PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        BCryptPasswordEncoder bcryptPasswordEncoder =new BCryptPasswordEncoder();
+    delPasswordEncoder.setDefaultPasswordEncoderForMatches(bcryptPasswordEncoder);
+    return delPasswordEncoder;      
+}
 	// @Autowired
     // public void config(AuthenticationManagerBuilder auth) throws Exception {
     //     auth.userDetailsService(US).passwordEncoder(encriptarPassword());
@@ -42,10 +51,11 @@ public class SecurityConfig{
 	public void config(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
-
+	
 	@Bean
 	public SecurityFilterChain filterChain (HttpSecurity http) throws Exception{
-		http.authorizeHttpRequests().anyRequest().authenticated()
+		
+		http.authorizeHttpRequests()
 		.and().formLogin().loginPage("/").defaultSuccessUrl("/index",true).permitAll()
 		.and().logout().permitAll().invalidateHttpSession(true);
 		return http.build();
@@ -54,5 +64,6 @@ public class SecurityConfig{
     public WebSecurityCustomizer webSecurityCustomizer() throws Exception{
         return (web)->web.ignoring().antMatchers("/CSS/**","/JS/**","/IMG/**");
     }
+
 
 }
