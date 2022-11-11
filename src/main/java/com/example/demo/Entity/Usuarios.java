@@ -23,6 +23,7 @@ public class Usuarios implements Serializable {
 	private Long id;
 	@Column(name="nombres")
 	private String nombres;
+	@Column(name="apellidos")
 	private String apellidos;
 	private String username;
 	private String correo;

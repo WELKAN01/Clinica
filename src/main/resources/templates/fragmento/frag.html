@@ -14,13 +14,13 @@
 </head>
 <body>
     <div class="dashboard"> 
-        <div class="margen" th:fragment="navbar">
+        <div class="margen overflow-hidden" th:fragment="navbar">
             <div class="superior">
                 <h1 class="sidebar-tittle"><i class="fa-solid fa-briefcase-medical"></i><span class="navs">Hola<span></h1>
             </div>
             <div class="nav">
                 <ul>
-                    <li><a href=""><i class="fas fa-user"></i><span class="navs">cliente</span></a></li>
+                    <li><a th:href="@{/Cliente}"><i class="fas fa-user"></i><span class="navs">cliente</span></a></li>
                     <li><a href=""><i class="fas fa-user"></i><span class="navs">proveedor</span></a></li>
                     <li><a href=""><i class="fas fa-user"></i><span class="navs">Areas</span></a></li>
                     <li><a href=""><i class="fas fa-user"></i><span class="navs">Doctor</span></a></li>
@@ -30,7 +30,7 @@
                 </ul>
             </div>
             <div class="footer" sec:authorize="isAuthenticated()">
-                <a href=""><i class="fa-solid fa-address-card"></i>PERFIL</a>
+                <a th:href="@{/perfil(nombre=${#authentication.principal.Nombres})}"><i class="fa-solid fa-address-card"></i>PERFIL</a>
                 <span  th:text="${afirmar}"></span>
                 <h5>Rango: 
                     <span sec:authentication="principal.authorities"></span>

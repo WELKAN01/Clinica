@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="fragmento/frag :: head">
+    </head>
+    <body>
+        <div class="dashboard">
+            <div class="margen" th:replace="fragmento/frag :: navbar">
+            </div>
+            
+            <div class="container my-auto content">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="m-3">PERFIL</h1>
+                    </div>
+                    <div class="card-body row col-12">
+                        <div class="row my-3">
+                            <div class="col-3 text-center">
+                                <h3>Nombre y Apellido</h3>
+                                <span
+                                class="mx-auto" 
+                                th:text="${#authentication.principal.nombres}+' '+${#authentication.principal.apellidos}">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-3 text-center">
+                                <h3>Correo Electronico</h3>
+                                <span
+                                class="mx-auto" 
+                                th:text="${#authentication.principal.correo}">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-3 text-center">
+                                <h3>Nombre Usuario</h3>
+                                <span
+                                class="mx-auto" 
+                                th:text="${#authentication.principal.username}">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-3 text-center">
+                                <h3>Rango</h3>
+                                <div  class="mx-auto" sec:authorize="hasAuthority('User')">Usuario</div>
+                                <div  class="mx-auto" sec:authorize="hasAuthority('ADMIN')">Administrador</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

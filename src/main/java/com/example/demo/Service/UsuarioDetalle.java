@@ -52,7 +52,6 @@ public class UsuarioDetalle implements UserDetails {
 
     @Override
     public boolean isCredentialsNonExpired() {
-        // TODO Auto-generated method stub
         return true;
     }
 

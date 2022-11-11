@@ -16,10 +16,13 @@ public class Areas implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Area_id")
     private Long id;
-    @Column(name="Nombre_Area")
+
+    @Column(name="Area_Nombre")
     private String Nombre_Area;
-    @Column(name="descripcion_Area")
+
+    @Column(name="Area_descripcion")
     private String descripcion;
+    
     public Long getId() {
         return id;
     }

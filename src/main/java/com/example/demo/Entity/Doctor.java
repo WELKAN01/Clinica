@@ -36,7 +36,7 @@ public class Doctor implements Serializable {
 
     @JoinColumn(name="Area_id")
     @ManyToOne
-    private List<Areas> Area;
+    private Areas Area;
 
     
     public Long getId() {
@@ -75,11 +75,11 @@ public class Doctor implements Serializable {
     public void setFoto(String foto) {
         this.foto = foto;
     }
-    public List<Areas> getArea() {
+    public Areas getArea() {
         return Area;
     }
-    public void setArea(List<Areas> area) {
-        Area = area;
+    public void setArea(Areas area) {
+        this.Area=area;
     }
     
 }

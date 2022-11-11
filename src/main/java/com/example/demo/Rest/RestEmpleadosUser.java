@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo.Rest;
 
 import java.net.http.HttpHeaders;
 import java.util.List;
