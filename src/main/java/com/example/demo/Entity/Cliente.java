@@ -15,6 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Cliente implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="cli_id")
     private long id;
     @Column(name="cli_nombres")
     private String nombres;
@@ -27,10 +28,9 @@ public class Cliente implements Serializable{
     @Column(name= "cli_foto")
     private String foto;
     @Column(name= "cli_nacimiento")
-    @Temporal(TemporalType.TIME)
-    @DateTimeFormat(pattern = "DD/mm/YYYY")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date nacimiento;
-
     public long getId() {
         return id;
     }
@@ -67,5 +67,13 @@ public class Cliente implements Serializable{
     public void setFoto(String foto) {
         this.foto = foto;
     }
+    public Date getNacimiento() {
+        return nacimiento;
+    }
+    public void setNacimiento(Date nacimiento) {
+        this.nacimiento = nacimiento;
+    }
+
+    
     
 }

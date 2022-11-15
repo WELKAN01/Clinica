@@ -70,13 +70,13 @@ public PasswordEncoder getPasswordEncoder() {
     }
 
 
-	// @Override
-	// public void addResourceHandlers(ResourceHandlerRegistry registry) {
-	// 	// TODO Auto-generated method stub
-	// 	String ruta="C://Users/Andy/Documents/springTRABAJO/POSTAMEDICA/src/main/resources/static/IMG/FOTOS";
-	// 	WebMvcConfigurer.super.addResourceHandlers(registry);
-	// 	registry.addResourceHandler("/FOTOS/**").addResourceLocations(ruta);
-	// }
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		// TODO Auto-generated method stub
+		String ruta="../POSTAMEDICA/src/main/resources/static/IMG/FOTOS/";
+		WebMvcConfigurer.super.addResourceHandlers(registry);
+		registry.addResourceHandler("/FOTOS/**").addResourceLocations("file:/"+ruta);
+	}
 
 
 

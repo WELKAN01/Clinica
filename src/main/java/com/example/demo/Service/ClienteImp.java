@@ -1,5 +1,7 @@
 package com.example.demo.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +25,11 @@ public class ClienteImp implements ClienteService{
     public void guardar(Cliente cliente) {
         CDAO.save(cliente);
         
+    }
+
+    @Override
+    public List<Cliente> listar() {
+        return CDAO.findAll();
     }
     
 }

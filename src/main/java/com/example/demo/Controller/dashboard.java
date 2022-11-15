@@ -24,6 +24,6 @@ public class dashboard {
 	@ResponseStatus(value =HttpStatus.OK)
 	@RequestMapping(value ="/index", method = RequestMethod.GET)
 	public String inicio(Model model,String username,SessionStatus s) {
-		return "Cliente/Cliente";
+		return "fragmento/frag";
 	}
 }

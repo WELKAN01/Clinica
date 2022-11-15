@@ -9,37 +9,79 @@
         <!-- contenido -->
         <div class="container my-3 content">
             <div class="card mb-5">
-                <h1 class="m-3">Cliente</h1>
-                <div class="card-body">
-                    <form action="" method="post">
-                        <div class="row">
-                            <div class="col-sm-6">
+                <h1 class="mt-3 mx-3">Cliente</h1>
+                <div class="card-header">
+                    <form th:action="@{/Cliente/save}" th:object="${cliente}" method="post" enctype="multipart/form-data">
+                        <div class="row my-3">
+                            <div class="col-sm-4">
                                 <label for="Nombre">Ingrese un nombre</label>
-                                <input type="text" class="form-control" id="Nombre" placeholder="Ingrese su nombre">
+                                <input type="text" class="form-control" name="nombres" id="nombres" placeholder="Ingrese su nombre">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <label for="Apellido">Ingrese apellido</label>
-                                <input type="text" class="form-control" id="Apellido" placeholder="Ingrese apellido">
+                                <input type="text" class="form-control" name="apellidos" id="Apellidos" placeholder="Ingrese apellido">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="nacimiento">Ingrese nacimiento</label>
+                                <input type="date" class="form-control" name="nacimiento" id="nacimiento" placeholder="Nacimiento">
                             </div>
                         </div>
-                        <div class="row my-3">
-                            <div class="col-sm-3">
-                                <label for="fecha">Ingrese nacimiento</label>
-                                <input type="date" class="form-control" id="fecha" placeholder="Nacimiento">
-                            </div>
+                        <div class="row justify-content-center">
                             <div class="col-sm-3">
                                 <label for="documento">Ingrese DNI</label>
-                                <input type="text" id="documento" class="form-control" placeholder="Ingrese DNI">
+                                <input type="text" name="DNI" id="DNI" class="form-control" placeholder="Ingrese DNI">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-3">
                                 <label for="telefono">telefono</label>
-                                <input type="text" id="telefono" class="form-control" placeholder="ingrese telefono">
+                                <input type="text" name="telefono" id="telefono" class="form-control" placeholder="ingrese telefono">
                             </div>
-                            <div class="row w-25 mx-auto">
-                                <button class="btn btn-danger" type="submit">Ingresar datos</button>
-                            </div>    
+                            <div class="col-sm-3">
+                                <label for="foto">foto</label>
+                                <input type="file" name="file" class="form-control" placeholder="ingrese foto" accept="image/png, image/gif, image/jpeg">
+                            </div>  
                         </div>    
+                        <div class="row justify-content-center my-4">
+                            <button class="btn btn-danger py-3 col-3" type="submit">Ingresar datos</button>
+                        </div>  
                     </form>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover text-center">
+                        <tr>
+                            <td class="col-1">id</td>
+                            <td class="col-1">nombre</td>
+                            <td class="col-1">apellido</td>
+                            <td class="col-1">años</td>
+                            <td class="col-1">dni</td>
+                            <td class="col-1">telefono</td>
+                            <td class="col-2">foto</td>
+                            <td class="col-2">nacimiento</td>
+                        </tr>
+                        <tbody class="align-items-center">
+                            <tr th:each="cliente : ${listcliente}">
+                                <td class="align-self-center" th:text="${cliente.id}"></td>
+                                <td th:text="${cliente.nombres}"></td>
+                                <td th:text="${cliente.apellidos}"></td>
+                                <td th:with="result=${#dates.year(fechahoy) - #dates.year(cliente.nacimiento)}"><span th:text="${result}"></span></td>
+                                <td th:text="${cliente.DNI}"></td>
+                                <td th:text="${cliente.telefono}"></td>
+                                <td><img class="img-thumbnail"  th:src="@{../IMG/FOTOS/}+${cliente.foto}" alt="" style="width:200px; height:200px"> </td>
+                                <td th:text="${cliente.nacimiento}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <nav aria-label="pagination">
+                                <ul class="pagination justify-content-center"></ul>
+                                    <li class="page-item" th:each="page : ${pages}">
+                                        <a class="page-link" th:href="@{|/?page=${page}|}" th:text="${page}"></a>
+                                    </li>
+                            </nav>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div> -->
                 </div>
             </div>
         </div>
