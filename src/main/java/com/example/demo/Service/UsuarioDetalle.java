@@ -55,10 +55,10 @@ public class UsuarioDetalle implements UserDetails {
         return true;
     }
 
-    @Override
-    public boolean isEnabled() {
-        return user.isEnabled();
-    }
+    // @Override
+    // public boolean isEnabled() {
+    //     return user.isEnabled();
+    // }
 
     public String getNombres(){
         return user.getNombres();
@@ -69,5 +69,11 @@ public class UsuarioDetalle implements UserDetails {
     }
     public String getCorreo() {
         return user.getCorreo();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        // TODO Auto-generated method stub
+        return true;
     }
 }

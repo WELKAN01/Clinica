@@ -9,6 +9,7 @@ import com.example.demo.Entity.Cliente;
 
 public interface ClienteService {
     void guardar(Cliente cliente);
+    Cliente guardarAPI(Cliente cliente);
     Page<Cliente> getAll(Pageable pageable);
     List<Cliente> listar();
 

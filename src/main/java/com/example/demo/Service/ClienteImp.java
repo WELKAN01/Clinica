@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.DAO.ClienteDAO;
 import com.example.demo.Entity.Cliente;
 
@@ -31,5 +30,10 @@ public class ClienteImp implements ClienteService{
     public List<Cliente> listar() {
         return CDAO.findAll();
     }
-    
+
+    @Override
+    public Cliente guardarAPI(Cliente cliente) {
+        return CDAO.save(cliente);
+    }
+
 }

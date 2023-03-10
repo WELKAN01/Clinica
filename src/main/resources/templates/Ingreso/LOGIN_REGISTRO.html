@@ -14,15 +14,15 @@
     <div class="container-fluid p-0 m-0"> 
         <!-- <img class="img-fluid vh-100 w-100" th:src="@{IMG/Recurso1.png}"> -->
             <div class="alert alert-danger alert-dismissible fade show z" role="alert" th:if="${error != null}">
-                <strong>Error!</strong> <span th:text="${error}"></span>
+                <strong>Error!</strong> <span class="text-mensaje" th:text="${error}"></span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>    
         <div class="back p-4 card-body position-absolute top-50 start-50 translate-middle">
-            <form th:action="@{/}" method="post">
+            <form th:action="@{/login}" id="form" method="post">
                 <div class="row justify-content-center mx-auto">
                 <h1 class="text-center">Ingreso</h1>
                	<div class="my-3 position-relative">
                		<input type="text" class="form-control my-2 " name="username" id="username" onkeyup="activausuario();" onclick="activausuario();">
-                	<label for="email" class="correo" onclick="activausuario();">Usuario</label>     
+                	<label for="username" class="correo" onclick="activausuario();">Usuario</label>     
                 </div>
                 <div class="my-3 position-relative ">
                 	<input type="password" class="form-control my-2" name="password" id="password" onkeyup="activacontraseña();" onclick="activacontraseña();">

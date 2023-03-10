@@ -32,9 +32,9 @@ public class UsuariosSer implements UserDetailsService, UsuarioImp {
 	//va listando los roles existentes	 
 		List<GrantedAuthority> listaroles = new ArrayList<>();
         
-        	for (Rol item : u.getRol()) {
-            listaroles.add(new SimpleGrantedAuthority(item.getAuthority()));
-        	}
+        for (Rol item : u.getRol()) {
+        listaroles.add(new SimpleGrantedAuthority(item.getAuthority()));
+		}
 	//al final de la funcion Userdetails obtiene USER(name,password,rol)
 		// return new User(u.getUsername(), u.getPassword(), listaroles);
 		return new UsuarioDetalle(u);
@@ -60,6 +60,13 @@ public class UsuariosSer implements UserDetailsService, UsuarioImp {
 	public Usuarios buscarUsuarioID(Long id) {
 		return UDAO.findById(id).orElse(null);
 	}
+
+	// @Override
+	// public Usuarios GuardarUsuario(Usuarios usuario) {
+	// 	int entero=Math.toIntExact(usuario.getId());
+	// 	usuario.setRol(Arrays.asList(new Rol(entero,"USER")));
+	// 	return UDAO.save(usuario);
+	// }
 
 	
 }

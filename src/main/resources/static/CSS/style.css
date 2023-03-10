@@ -4,7 +4,7 @@
     font-family: 'Anek Telugu', sans-serif;
 }
 body{
-    font-size:calc();
+    font-size:calc(100%-1em);
 }
 .dashboard{
     display: flex;
@@ -14,14 +14,14 @@ body{
     
 }
 .sidebar-tittle{
+    display: flex;
     padding: 25px 10px 5px 10px;
+    align-items: center;
     color: rgb(45, 48, 219);
 }
 .margen{
-    min-width: 7%;
+    max-width:220px;
     height: 100vh;
-    align-items: center;
-    justify-items: center;
     border-top-right-radius: 40px;
     border-bottom-right-radius: 40px;
     line-height: 45px;
@@ -36,8 +36,6 @@ body{
     border-radius: 15px;
     list-style: none;
     height: 50px;
-    max-width: 100%;
-    display: flex;
     text-decoration: none;
     margin: 15px 10px;
     padding: 5px 15px 15px 15px;
@@ -60,8 +58,8 @@ li:hover{
     border-radius: 15px;
     height: 30px;
 }
-.nav:hover{
-    color: rgb(41, 41, 41);
+.nav-activo{
+    color: blueviolet;
 }
 
 .content{
@@ -69,7 +67,7 @@ li:hover{
     /* margin-right: 20px;
     padding-top: 20px;
     padding-bottom: 20px; */
-    overflow-y:visible;
+    overflow-y: scroll;
     overflow-x: hidden;
 }
 
@@ -103,4 +101,38 @@ a i{
 }
 .z{
     z-index: 2;
+}
+.row-delete{
+    background-color: brown;
+    transition: all 500ms ease-in;
+}
+.row-update{
+    animation: update 1s;
+}
+
+@keyframes update{
+    0%{
+        background-color: white;
+    }
+    50%{
+        background-color: coral;
+    }
+    100%{
+        background-color: white;
+    }
+}
+.row-add{
+    animation: add 1s;
+} 
+
+@keyframes add{
+    0%{
+        background-color: white;
+    }
+    50%{
+        background-color: aqua;
+    }
+    100%{
+        background-color: white;
+    }
 }

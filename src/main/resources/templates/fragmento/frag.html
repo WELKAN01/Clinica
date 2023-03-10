@@ -6,27 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POSTA ANITA</title>
     <link rel="stylesheet" th:href="@{../CSS/style.css}">
-    <script src="https://kit.fontawesome.com/abfa0b2316.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/30974a34fb.js" crossorigin="anonymous"></script>
     <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/brands.js" integrity="sha384-sCI3dTBIJuqT6AwL++zH7qL8ZdKaHpxU43dDt9SyOzimtQ9eyRhkG3B7KMl6AO19" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script> -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script th:src="@{../JS/Activebar.js}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="dashboard"> 
         <div class="margen overflow-hidden" th:fragment="navbar">
             <div class="superior">
-                <h1 class="sidebar-tittle"><i class="fa-solid fa-briefcase-medical"></i><span class="navs">Hola<span></h1>
+            <a class="nav-link" th:href="@{/}">
+                <h1 class="sidebar-tittle">
+                    <i class="fa-solid fa-briefcase-medical text-success"></i>
+                    <span class="navs fs-5 mx-4">Posta Santa clara<span>
+                </h1>
+            </a>
             </div>
             <div class="nav">
                 <ul>
                     <li><a th:href="@{/Cliente/}"><i class="fas fa-user"></i><span class="navs">cliente</span></a></li>
-                    <li><a href=""><i class="fas fa-user"></i><span class="navs">proveedor</span></a></li>
-                    <li><a href=""><i class="fas fa-user"></i><span class="navs">Areas</span></a></li>
-                    <li><a href=""><i class="fas fa-user"></i><span class="navs">Doctor</span></a></li>
+                    <li><a th:href="@{/Sala/}"><i class="fas fa-user"></i><span class="navs">Salas</span></a></li>
+                    <li><a th:href="@{/Areas/}"><i class="fas fa-user"></i><span class="navs">Areas</span></a></li>
+                    <li><a th:href="@{/Doctor/}"><i class="fas fa-user"></i><span class="navs">Doctor</span></a></li>
                     <li><a th:href="@{/usuarios}"><i class="fas fa-user"></i><span class="navs">Gestion</span></a></li>
-                    <li><a href=""><i class="fas fa-user"></i><span class="navs">herramienta</span></a></li>
-                    <li><a href=""><i class="fas fa-user"></i><span class="navs">citas</span></a></li>
+                    <li><a th:href="@{/citas/}"><i class="fas fa-user"></i><span class="navs">Citas</span></a></li>
                 </ul>
             </div>
             <div class="footer" sec:authorize="isAuthenticated()">
@@ -35,8 +41,11 @@
                 <h5>Rango: 
                     <span sec:authentication="principal.authorities"></span>
                 </h5>
-                <h5>Nombre: 
+                <h5>Usuario: 
                     <span th:text ="${#authentication.name}"></span>
+                </h5>
+                <h5>
+                    Nombre:
                     <span sec:authentication="principal.Nombres"></span>
                 </h5>
                 <form th:action="@{/logout}" method="post">

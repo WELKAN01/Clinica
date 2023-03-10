@@ -2,7 +2,6 @@ package com.example.demo.Entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +16,13 @@ public class Rol implements Serializable{
     private Long id;
     private int user_id;
     private String authority;
+    
+    public Rol() {
+    }
+    public Rol(int user_id, String authority) {
+        this.user_id = user_id;
+        this.authority = authority;
+    }
     public Long getId() {
         return id;
     }

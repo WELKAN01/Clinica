@@ -3,20 +3,11 @@ package com.example.demo.Controller;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -41,33 +32,38 @@ public class ClienteController {
     @Autowired
 	private ClienteImp CDao;
 
-	// @GetMapping("/")
-	// public String Listar(@RequestParam Map<String,Object> params, Model model,Cliente cliente){
-	// 	int page=params.get("page") != null ? (Integer.valueOf(params.get("page").toString())-1) :0;
-	// 	PageRequest pageRequest= PageRequest.of(page,10);
-	// 	Page<Cliente> pageCliente= CDao.getAll(pageRequest);
-	// 	int totalpage=pageCliente.getTotalPages();
-	// 	if (totalpage>0) {
-	// 		List<Integer> pages=IntStream.rangeClosed(1, totalpage).boxed().collect(Collectors.toList());
-	// 		model.addAttribute("pages", pages);
-	// 	}
-	// 	model.addAttribute("cliente", cliente);
-	// 	model.addAttribute("listcliente", pageCliente.getContent());
-	// 	System.out.println(pageCliente.getSize());
-	// 	return "Cliente/cliente";
-	// }
 	@GetMapping("/")
-	public String Listar(Model model,Cliente cliente){
+	public String Listar(@RequestParam Map<String,Object> params, Model model,Cliente cliente){
+		int page=params.get("page") != null ? (Integer.valueOf(params.get("page").toString())-1) :0;
+		PageRequest pageRequest= PageRequest.of(page,4);
+		Page<Cliente> pageCliente= CDao.getAll(pageRequest);
+		int totalpage=pageCliente.getTotalPages();
+		if (totalpage>0) {
+			List<Integer> pages=IntStream.rangeClosed(1, totalpage).boxed().collect(Collectors.toList());
+			model.addAttribute("pages", pages);
+		}
 		Date date=new Date();
-		List<Cliente> c=CDao.listar();
-		LocalDate fecha_nacimiento=LocalDate.parse(c.get(1).getNacimiento().toString());
-		long diff = ChronoUnit.YEARS.between(fecha_nacimiento, LocalDate.now());
 		model.addAttribute("fechahoy", date);
 		model.addAttribute("cliente", cliente);
-		model.addAttribute("listcliente", CDao.listar());
-		System.out.println(diff);
+		model.addAttribute("listcliente", pageCliente.getContent());
+		model.addAttribute("Current",page+1);
+	 	model.addAttribute("next",page+2);
+		model.addAttribute("prev",page);
+		model.addAttribute("last",totalpage);
 		return "Cliente/cliente";
 	}
+	// @GetMapping("/")
+	// public String Listar(Model model,Cliente cliente){
+	// 	Date date=new Date();
+	// 	List<Cliente> c=CDao.listar();
+	// 	LocalDate fecha_nacimiento=LocalDate.parse(c.get(1).getNacimiento().toString());
+	// 	long diff = ChronoUnit.YEARS.between(fecha_nacimiento, LocalDate.now());
+	// 	model.addAttribute("fechahoy", date);
+	// 	model.addAttribute("cliente", cliente);
+	// 	model.addAttribute("listcliente", CDao.listar());
+	// 	System.out.println(diff);
+	// 	return "Cliente/cliente";
+	// }
 	@RequestMapping(value="/save", method = RequestMethod.POST)
 	public String uploadFile(@RequestParam(name="file",required = false) MultipartFile foto,
 	Cliente cliente,Model model,RedirectAttributes flash, String username) {

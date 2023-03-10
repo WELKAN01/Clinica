@@ -65,23 +65,30 @@
                                 <td th:with="result=${#dates.year(fechahoy) - #dates.year(cliente.nacimiento)}"><span th:text="${result}"></span></td>
                                 <td th:text="${cliente.DNI}"></td>
                                 <td th:text="${cliente.telefono}"></td>
-                                <td><img class="img-thumbnail"  th:src="@{../IMG/FOTOS/}+${cliente.foto}" alt="" style="width:200px; height:200px"> </td>
+                                <td><img class="img-thumbnail"  th:src="@{../IMG/FOTOS/}+${cliente.foto}" alt="chupapis" style="width:100px; height:100px"> </td>
                                 <td th:text="${cliente.nacimiento}"></td>
                             </tr>
                         </tbody>
                     </table>
-                    <!-- <div class="row">
+                    <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
-                            <nav aria-label="pagination">
-                                <ul class="pagination justify-content-center"></ul>
-                                    <li class="page-item" th:each="page : ${pages}">
-                                        <a class="page-link" th:href="@{|/?page=${page}|}" th:text="${page}"></a>
-                                    </li>
-                            </nav>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                  <li class="page-item" th:classappend="${prev==0 ? 'disabled' : ''}">
+                                    <a class="page-link" th:href="@{|?page=${prev}|}">&#11013;</a>
+                                </li>
+                                  <li class="page-item" th:each="page : ${pages}" th:classappend="${Current==page ? 'active' : ''}">
+                                    <a class="page-link" th:href="@{|?page=${page}|}" th:text="${page}"></a>
+                                </li>
+                                <li class="page-item" th:classappend="${Current==last ? 'disabled' : ''}">
+                                    <a class="page-link" th:href="@{|?page=${next}|}">	&#10145;</a>
+                                </li>
+                                </ul>
+                              </nav>
                         </div>
                         <div class="col-md-2"></div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>

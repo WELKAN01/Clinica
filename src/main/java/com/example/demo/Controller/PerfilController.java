@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PerfilController {
     
     @RequestMapping(value="/perfil" , params="nombre")
-        public String perfil(@RequestParam String nombre,Principal p) {
+        public String perfil(@RequestParam String nombre) {
             return "Perfil/perfil";
         }
 }

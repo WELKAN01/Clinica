@@ -52,14 +52,16 @@
                                 <td>users</td>
                                 <td>password</td>
                                 <td>rol</td>
+                                <td>editar</td>
+                                <td>eliminar</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:each="item : ${ListaUsuarios}">
                                 <td th:text="${item.nombres}"></td>
                                 <td th:text="${item.apellidos}"></td>
-                                <td th:text="${item.username}"></td>
                                 <td th:text="${item.correo}"></td>
+                                <td th:text="${item.username}"></td>
                                 <td th:text="${item.password}"></td>
                                 <td th:each="item1 : ${item.rol}">
                                     <span th:text="${item1.authority}" ></span> </td>
@@ -87,8 +89,8 @@
     <script type="text/javascript">
         const apps=document.querySelector('#app');
         var i=0;
-        var URL="http://localhost:8080";
-        fetch('http://localhost:8080/usuariolist').
+        var URL="http://localhost:8081";
+        fetch('http://localhost:8081/usuariolist').
             then(res=> res.json()).
             then(data =>{
                 console.log(data);

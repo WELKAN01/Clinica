@@ -31,7 +31,6 @@ public class Usuarios implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	private List<Rol> rol;
-	private boolean enabled;
 	public Long getId() {
 		return id;
 	}
@@ -74,12 +73,12 @@ public class Usuarios implements Serializable {
 	public void setRol(List<Rol> rol) {
 		this.rol = rol;
 	}
-	public boolean isEnabled() {
-		return enabled;
-	}
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
+	// public boolean isEnabled() {
+	// 	return enabled;
+	// }
+	// public void setEnabled(boolean enabled) {
+	// 	this.enabled = enabled;
+	// }
 	
 	
 }

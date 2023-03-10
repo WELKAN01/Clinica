@@ -12,7 +12,7 @@ import org.springframework.web.bind.support.SessionStatus;
 public class LRcontroller {
 
 	@ResponseStatus(value = HttpStatus.OK)
-	@RequestMapping("/")
+	@RequestMapping("/login")
 	public String inicio(@RequestParam(value = "error",required = false) String error, Model model, SessionStatus s) {
 		if (error!=null) {
             model.addAttribute("error","usuario/contraseña incorrecta");
@@ -22,4 +22,9 @@ public class LRcontroller {
 		// model.addAttribute("usuario", user.getNombres());
 		return "Ingreso/LOGIN_REGISTRO";
 	}
+	// @RequestMapping("/")
+	// public String Registro(){
+		
+	// 	return "Ingreso/LOGIN_REGISTRO";
+	// }
 }
