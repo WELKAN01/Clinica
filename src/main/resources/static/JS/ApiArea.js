@@ -2,7 +2,7 @@ const urlListaArea="http://localhost:8081/listaArea"
 const urlGuardarArea="http://localhost:8081/guardarArea"
 const tabla=document.getElementById("table-api").content;
 const principaltabla=document.querySelector(".table");
-let par=0;
+par=0;
 let selectrow;
 const $form=document.querySelector(".form-api");
 const frag=document.createDocumentFragment();
@@ -16,12 +16,13 @@ const getAreas= async() =>{
             tabla.querySelector(".id").textContent = Element.area_id;
             tabla.querySelector(".name").textContent= Element.nombre_Area;
             tabla.querySelector(".description").textContent=Element.descripcion;
-            tabla.querySelector(".editar").dataset.id=Element.id;
+            tabla.querySelector(".editar").dataset.id=Element.area_id;
             tabla.querySelector(".editar").dataset.nombre_Area=Element.nombre_Area;
             tabla.querySelector(".editar").dataset.descripcion=Element.descripcion;
-            tabla.querySelector(".eliminar").dataset.id=Element.id;
+            tabla.querySelector(".eliminar").dataset.id=Element.area_id;
             let clone = document.importNode(tabla,true);
             frag.appendChild(clone);
+            debugger
         })
         principaltabla.querySelector("tbody").appendChild(frag);
     } catch (error) {
@@ -57,7 +58,7 @@ document.addEventListener("submit",async (e)=>{
                         tabla.querySelector(".editar").dataset.id=data.area_id;
                         tabla.querySelector(".editar").dataset.nombre_Area=data.nombre_Area;
                         tabla.querySelector(".editar").dataset.descripcion=data.descripcion;
-                        tabla.querySelector(".eliminar").dataset.id=data.id;
+                        tabla.querySelector(".eliminar").dataset.id=data.area_id;
                         let clone = document.importNode(tabla,true);
                         frag.appendChild(clone);
                         principaltabla.querySelector("tbody").appendChild(frag);
@@ -106,10 +107,12 @@ document.addEventListener("click", e=>{
         $form.nombre.value=e.target.dataset.nombre_Area;
         $form.descripcion.value=e.target.dataset.descripcion;
         selectrow=e.target.parentElement.parentElement;
+        console.log(par)
         console.log(selectrow)
     }
     if(e.target.matches(".eliminar")){
         par=e.target.dataset.id;
+        console.log(par)
         eliminar();
         e.target.parentElement.parentElement.classList.add("row-delete")
         e.target.parentElement.parentElement.querySelector(".editar").setAttribute("disabled","")
@@ -129,6 +132,7 @@ const eliminar = async()=>{
             }
         const res=await fetch("http://localhost:8081/EliminarArea/"+par, options);
         const json = await res.json();
+        debugger
     } catch (error) {
         console.log(error)
     }

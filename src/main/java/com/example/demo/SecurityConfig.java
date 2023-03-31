@@ -54,7 +54,7 @@ public class SecurityConfig{
 	public SecurityFilterChain filterChain (HttpSecurity http) throws Exception{
 
 		http.cors().and().csrf().disable();
-		http.authorizeHttpRequests()
+		http.authorizeHttpRequests().anyRequest().authenticated()
 		.and().formLogin().loginPage("/login").defaultSuccessUrl("/",true).permitAll()
 		.and().logout().permitAll().invalidateHttpSession(true);
 		return http.build();

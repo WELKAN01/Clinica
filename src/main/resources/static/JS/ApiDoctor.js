@@ -38,7 +38,7 @@ document.addEventListener("submit",async (e)=>{
             let res=await fetch("http://localhost:8081/doctor/guardardoctor",options),
             data=await res.text();
             debugger
-            location.reload();
+            window.location.reload();
         } catch (error) {
             console.log(error);
         }

@@ -2,7 +2,6 @@ package com.example.demo.Api_Rest;
 
 import java.util.List;
 
-import org.apache.logging.log4j.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,6 @@ import com.example.demo.Entity.Areas;
 import com.example.demo.Service.AreaImp;
 
 @RestController
-
 public class RestAreaController {
     @Autowired
     private AreaImp AI;

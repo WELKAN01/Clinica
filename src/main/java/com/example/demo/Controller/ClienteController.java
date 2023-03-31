@@ -3,8 +3,6 @@ package com.example.demo.Controller;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -75,7 +73,6 @@ public class ClienteController {
 				Files.write(rutaabsoluto, bytes);
 				cliente.setFoto(foto.getOriginalFilename());
 			} catch (Exception e) {
-			// TODO: handle exception
 			}
 			CDao.guardar(cliente);
 			flash.addFlashAttribute("correcto","Se subio todo");
